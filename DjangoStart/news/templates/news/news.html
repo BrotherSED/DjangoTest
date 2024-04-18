@@ -1,0 +1,22 @@
+{% extends 'main/layout.html'%}
+
+{% block title%}Новости на сайте{% endblock %}
+
+{% block body %}
+<div class="features">
+    <h1>Страница новостей!</h1>
+    <p>Страница новостей!</p>
+    <button class="btn-warning">На главную страницу</button>
+    {% if news %}
+        {% for el in news %}
+            <div class="article">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.anons }}</p>
+                <a href="{% url 'news-detail' el.id %}"><button class="btn btn-create">Читать подробнее...</button></a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет новостей!</p>
+    {% endif %}
+</div>        
+{% endblock %}
